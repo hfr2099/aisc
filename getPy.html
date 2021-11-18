@@ -31,7 +31,7 @@
 // 两种获取方法
 function GetQueryString(parameter) {
     var reg = new RegExp("(^|&)" + parameter + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
+    var r = window.location.substr(window.location.lastIndexOf('?')+1).match(reg);
     if (r != null) { 
         if (parameter == "wd") {
             return decodeURI(r[2]) ;//解决中文乱码
@@ -39,7 +39,8 @@ function GetQueryString(parameter) {
     }
 }
 var words=GetQueryString("wd");
-document.write(111);
+document.write(window.location);
+document.write(words);
 document.write(pinyin(words));
 </script>
 </body>
